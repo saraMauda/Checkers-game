@@ -1,0 +1,411 @@
+/* styles.css */
+
+/* === הגדרות כלליות === */
+
+/* איפוס ברירת מחדל כדי למנוע מרווחים לא רצויים */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* כולל פאדינג וגבולות בחישוב הרוחב */
+}
+
+/* הגדרות בסיסיות לגוף הדף */
+body {
+    font-family: 'Open Sans', sans-serif; /* פונט מודרני וקריא, נטען דרך Google Fonts */
+    background-color: #f0e6d2; /* רקע חם ונעים, בהשראת נושא הדמקה */
+    color: #4a2c2a; /* צבע טקסט חום כהה */
+    min-height: 100vh; /* גובה מינימלי של מסך מלא */
+    display: flex; /* שימוש ב-Flexbox למרכוז תוכן */
+    justify-content: center; /* מרכוז אופקי */
+    align-items: center; /* מרכוז אנכי */
+}
+.king {
+    border: 3px solid #ffd700; /* מסגרת זהב למלכים */
+    box-sizing: border-box; /* כדי שהמסגרת לא תגדיל את הכלי */
+}
+/* === סגנונות משותפים לכל הדפים === */
+/* הודעת סיום משחק דרמטית */
+#game-over {
+    display: none; /* מוסתר עד שהמשחק נגמר */
+    position: fixed; /* ממוקם מעל הכל */
+    top: 0;
+    left: 0;
+    width: 100%; /* תופס את כל רוחב המסך */
+    height: 100%; /* תופס את כל גובה המסך */
+    background-color: rgba(0, 0, 0, 0.8); /* רקע שחור חצי-שקוף */
+    color: #fff; /* טקסט לבן לנראות */
+    text-align: center;
+    z-index: 1000; /* מבטיח שהוא מעל כל השאר */
+    animation: fadeIn 0.5s ease-in; /* אנימציה של הופעה */
+}
+
+/* הודעת הניצחון */
+#win-message {
+    font-size: 60px; /* גודל טקסט גדול ומרשים */
+    margin: 20vh 0 40px; /* מרווח מלמעלה ומתחת */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* צל למראה דרמטי */
+}
+
+/* כפתורים בתוך הודעת הסיום */
+#game-over button {
+    background-color: #8b5a2b; /* חום כהה, מתאים ללוח */
+    color: #fff; /* טקסט לבן */
+    border: none;
+    padding: 20px 40px; /* גודל גדול יותר */
+    font-size: 24px; /* טקסט גדול */
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 15px; /* מרווח בין הכפתורים */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* אנימציות */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* צל לעומק */
+}
+
+#game-over button:hover {
+    background-color: #a3723f; /* חום בהיר יותר בהעברת עכבר */
+    transform: scale(1.05); /* מגדיל קצת את הכפתור */
+}
+
+/* אנימציה להופעת ההודעה */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+/* מיכל ראשי למרכוז התוכן */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* מרכוז אנכי של התוכן */
+    align-items: center; /* מרכוז אופקי של התוכן */
+    flex: 1; /* תופס את כל השטח הזמין ללא גלילה (למעט דף ההוראות) */
+    width: 100%;
+    max-width: 800px; /* רוחב מקסימלי כדי למנוע תוכן רחב מדי במסכים גדולים */
+    padding: 10px; /* הקטנת פאדינג כללי */
+    text-align: center;
+}
+
+/* כותרות ראשיות */
+h1 {
+    font-size: 2.5em; /* גודל גדול לכותרת */
+    color: #5c4033; /* צבע חום כהה */
+    margin-bottom: 10px; /* הקטנת המרווח מתחת לכותרת כדי למנוע גלילה */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* צל עדין למראה תלת-ממדי */
+}
+
+/* === סגנונות לדף ה-Home === */
+
+/* תפריט בדף ה-Home */
+.menu {
+    display: flex;
+    flex-direction: column; /* סידור אנכי של הכפתורים */
+    gap: 15px; /* רווח בין הכפתורים */
+}
+
+/* כפתורי תפריט בדף ה-Home */
+.menu-button {
+    display: inline-block;
+    padding: 12px 25px; /* פאדינג למראה מרווח */
+    font-size: 1.2em;
+    font-weight: 700; /* כתב מודגש */
+    cursor: pointer;
+    background-color: #8b5a2b; /* צבע חום בהשראת הדמקה */
+    color: white;
+    text-decoration: none; /* הסרת קו תחתון מקישור */
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s; /* אנימציה חלקה */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* צל עדין */
+    width: 200px; /* רוחב קבוע לכפתורים */
+}
+
+.menu-button:hover {
+    background-color: #5c4033; /* צבע כהה יותר בעת hover */
+    transform: translateY(-2px); /* אפקט הרמה קל */
+}
+
+/* === סגנונות לדפי משחק (Single Player, Two Players) === */
+
+/* לוח המשחק */
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(8, 50px); /* 8 עמודות ברוחב 50px */
+    grid-gap: 2px; /* רווח קטן בין התאים */
+    border: 4px solid #5c4033; /* גבול חום כהה */
+    padding: 5px; /* הקטנת פאדינג */
+    background-color: #fff; /* רקע לבן ללוח */
+    border-radius: 8px; /* פינות מעוגלות */
+    margin: 5px 0; /* הקטנת מרווח אנכי */
+}
+
+/* תאי הלוח */
+.cell {
+    width: 50px;
+    height: 50px;
+    background-color: #f5e8c7; /* צבע בהיר לתאים */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+/* תאים כהים */
+.cell.black {
+    background-color: #8b5a2b; /* צבע חום כהה לתאים כהים */
+}
+
+/* תוויות מספרים ואותיות בלוח */
+.cell .label {
+    position: absolute;
+    font-size: 10px;
+    color: #3a2a1f; /* חום-שחור כהה שמתאים לעיצוב הכללי */
+}
+
+/* מיקום תווית שורה */
+.cell .row-label {
+    top: 2px;
+    left: 2px;
+}
+
+/* מיקום תווית עמודה */
+.cell .col-label {
+    bottom: 2px;
+    right: 2px;
+}
+
+/* כלי משחק */
+.piece {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* צורה עגולה */
+    z-index: 1; /* מעל התא */
+}
+
+/* כלי של שחקן 1 (חום כהה) */
+.player1 {
+    background-color: #4a2c2a;
+}
+
+/* כלי של שחקן 2 (חום בהיר) */
+.player2 {
+    background-color: #d2b48c;
+}
+
+.selected {
+    background-color: #f8e0a8 !important;
+}
+
+/* תצוגת תור, מהלכים אפשריים, ובחירת קושי */
+#turn-display, #possible-moves, #difficulty-select {
+    margin: 2px 0; /* הקטנת המרווח למינימום כדי למנוע גלילה */
+    font-size: 18px;
+    color: #5c4033;
+}
+
+/* בחירת קושי */
+#difficulty-select {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* הקטנת רווח */
+}
+
+#difficulty-select select {
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #8b5a2b;
+}
+
+/* מיכל כפתורים (Restart Game, Back to Home) */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* הקטנת רווח בין הכפתורים */
+    margin: 2px 0; /* הקטנת מרווח אנכי */
+}
+
+/* כפתורים כלליים (Restart, Back to Home, וכו') */
+.button, #restart-btn, #game-over button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #8b5a2b;
+    color: white;
+    border: none;
+    border-radius: 8px; /* עיגול זהה בכל הדפים */
+    text-decoration: none;
+    text-align: center;
+    width: 150px; /* רוחב קבוע זהה */
+    box-sizing: border-box;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* צל זהה בכל הדפים */
+}
+
+.button:hover, #restart-btn:hover, #game-over button:hover {
+    background-color: #5c4033;
+    transform: translateY(-2px);
+}
+
+/* תצוגת סיום משחק */
+#game-over {
+    margin-top: 5px; /* הקטנת המרווח כדי למנוע גלילה */
+    text-align: center;
+}
+
+/* === סגנונות לדף ההוראות === */
+
+/* תוכן דף ההוראות */
+.instructions {
+    text-align: center;
+    margin: 20px;
+}
+
+/* כרטיסיות הוראות */
+.instruction-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.instruction-card:hover {
+    transform: translateY(-5px);
+}
+
+.instruction-card h2 {
+    color: #5c4033;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.instruction-card p, .instruction-card ul {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #4a2c2a;
+}
+
+.instruction-card ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.instruction-card li {
+    margin-bottom: 10px;
+}
+
+/* === רספונסיביות === */
+
+/* התאמות למסכים עד 600px (טאבלטים, טלפונים גדולים) */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em; /* הקטנת כותרת */
+    }
+
+    .container {
+        padding: 5px; /* הקטנת פאדינג נוסף */
+        width: 95%; /* רוחב גדול יותר ביחס למסך */
+    }
+
+    /* תפריט בדף ה-Home */
+    .menu-button {
+        width: 150px;
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    /* לוח המשחק */
+    #game-board {
+        grid-template-columns: repeat(8, 40px); /* הקטנת גודל תאים */
+        grid-gap: 1px;
+        padding: 5px;
+    }
+
+    .cell {
+        width: 40px;
+        height: 40px;
+    }
+
+    .piece {
+        width: 32px;
+        height: 32px;
+    }
+
+    .cell .label {
+        font-size: 8px;
+    }
+
+    /* כפתורים */
+    .button, #restart-btn, #game-over button {
+        width: 120px;
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+
+    .button-container {
+        flex-direction: column; /* סידור אנכי בטלפונים */
+        gap: 5px; /* הקטנת רווח */
+    }
+
+    /* דף ההוראות */
+    .instruction-card {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .instruction-card h2 {
+        font-size: 1.3em;
+    }
+
+    .instruction-card p, .instruction-card ul {
+        font-size: 1em;
+    }
+}
+
+/* התאמות למסכים עד 400px (טלפונים קטנים) */
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    /* תפריט בדף ה-Home */
+    .menu-button {
+        width: 120px;
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    /* לוח המשחק */
+    #game-board {
+        grid-template-columns: repeat(8, 30px);
+    }
+
+    .cell {
+        width: 30px;
+        height: 30px;
+    }
+
+    .piece {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* דף ההוראות */
+    .instruction-card {
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    .instruction-card h2 {
+        font-size: 1.2em;
+    }
+
+    .instruction-card p, .instruction-card ul {
+        font-size: 0.9em;
+    }
+}

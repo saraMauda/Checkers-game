@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkers Game - Two Players</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="icon" href="./955f240018711b785cf5ece4efe73a59.jpg"/>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Checkers Game - Two Players</h1>
+        <div id="turn-display">Turn: Player</div>
+        <div id="possible-moves">Possible Moves: None</div>
+        <div id="game-board"></div>
+        <div class="button-container">
+            <button id="restart-btn" onclick="restartGame()">Restart Game</button>
+            <a href="index.html" class="button">Back to Home</a>
+        </div>
+        <div id="game-over">
+            <p id="win-message"></p>
+            <button onclick="restartGame()">New Game</button>
+            <button onclick="window.location.href='index.html'">Back to Home</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        window.isSinglePlayer = false;
+        function setDifficulty() {
+            window.difficulty = document.getElementById('difficulty').value;
+            console.log('Difficulty set to:', window.difficulty);
+        }
+
+        window.onload = function() {
+            console.log('window.onload called for Two Players');
+            initializeGame();
+            initializeBoard();
+            renderBoard();
+        };
+    </script>
+</body>
+</html>

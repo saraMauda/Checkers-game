@@ -1,0 +1,113 @@
+/* home.css - עיצוב ספציפי לדף הבית */
+body.home-page {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-image:url(./955f240018711b785cf5ece4efe73a59.jpg); /* בז' בהיר - צבע קלאסי של לוח דמקה */
+    color: #4a2c2a; /* חום כהה */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.home-container {
+    text-align: center;
+    padding: 40px;
+    background-color: #f0e6d2;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    z-index: 2; /* גבוה יותר כדי לוודא שהכפתורים מעל הדקורציה */
+}
+
+.title {
+    font-family: 'Teko', sans-serif;
+    font-size: 3rem;
+    color: #6b4e31; /* חום כהה - מתאים ללוח דמקה */
+    margin-bottom: 10px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.instructions {
+    font-size: 1.1rem;
+    color: #a68a64; /* חום בהיר - נעים לעין */
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 3; /* מבטיח שהכפתורים ניתנים ללחיצה */
+}
+
+.home-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #6b4e31; /* חום כהה - צבע לוח דמקה */
+    color: #fff;
+    cursor: pointer; /* מבהיר שניתן ללחוץ */
+    pointer-events: auto; /* מבטיח שהכפתור מגיב ללחיצות */
+}
+
+.home-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.checkerboard-decor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #6b4e31 25%, #f5f5dc 25%, #f5f5dc 50%, #6b4e31 50%, #6b4e31 75%, #f5f5dc 75%, #f5f5dc);
+    background-size: 40px 40px; /* גודל התאים בדפוס */
+    opacity: 0.1;
+    z-index: 1; /* נמוך יותר כדי לא לחפוף לכפתורים */
+    pointer-events: none; /* מבטיח שהדקורציה לא חוסמת לחיצות */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* עיצוב רספונסיבי */
+@media (max-width: 600px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .instructions {
+        font-size: 1rem;
+    }
+
+    .home-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .home-container {
+        padding: 20px;
+    }
+}
