@@ -54,14 +54,6 @@ correct rule implementation, and structured architecture.
 
 <h2>Technical Architecture</h2>
 
-<h3>Structure</h3>
-
-<pre>
-index.html
-style.css
-script.js
-</pre>
-
 <h3>JavaScript Design</h3>
 
 <ul>
@@ -82,14 +74,6 @@ All rule validation occurs before committing a move to ensure game integrity.
 </p>
 
 <hr/>
-
-<h2>Technology Stack</h2>
-
-<ul>
-  <li>JavaScript (Vanilla)</li>
-  <li>HTML5</li>
-  <li>CSS3</li>
-</ul>
 
 <p>
 No external libraries or frameworks were used.
@@ -114,30 +98,28 @@ No external libraries or frameworks were used.
 <table align="center">
   <tr>
     <td align="center">
-      <img src="screenshots/board-start.png" width="400"/><br/>
+      <img src="screenshots/home.png" width="400"/><br/>
       <strong>Initial Board</strong>
     </td>
     <td align="center">
-      <img src="screenshots/gameplay.png" width="400"/><br/>
-      <strong>Gameplay</strong>
+      <img src="screenshots/instructions.png" width="400"/><br/>
+      <strong>instructions</strong>
+    </td>
+  </tr>
+    <tr>
+    <td align="center">
+      <img src="screenshots/signle.png" width="400"/><br/>
+      <strong>signle</strong>
+    </td>
+    <td align="center">
+      <img src="screenshots/tow-players.png" width="400"/><br/>
+      <strong>two-players</strong>
     </td>
   </tr>
 </table>
 
 <br/>
-
-<table align="center">
-  <tr>
-    <td align="center">
-      <img src="screenshots/king-promotion.png" width="400"/><br/>
-      <strong>King Promotion</strong>
-    </td>
-    <td align="center">
-      <img src="screenshots/game-over.png" width="400"/><br/>
-      <strong>Game Over</strong>
-    </td>
-  </tr>
-</table>
+>
 
 <hr/>
 
