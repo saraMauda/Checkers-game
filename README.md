@@ -99,7 +99,7 @@ No external libraries or frameworks were used.
   <tr>
     <td align="center">
       <img src="screenshots/home.png" width="400"/><br/>
-      <strong>Initial Board</strong>
+      <strong>home</strong>
     </td>
     <td align="center">
       <img src="screenshots/instructions.png" width="400"/><br/>
@@ -112,7 +112,7 @@ No external libraries or frameworks were used.
       <strong>signle</strong>
     </td>
     <td align="center">
-      <img src="screenshots/tow-players.png" width="400"/><br/>
+      <img src="screenshots/two players.png" width="400"/><br/>
       <strong>two-players</strong>
     </td>
   </tr>
